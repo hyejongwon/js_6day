@@ -6,7 +6,7 @@
     <link href="css/halloween.css" rel="stylesheet" type="text/css">
     <style>
         html{scroll-behavior: smooth;}
-        .gnb li a{pointer-events: none;}
+        .gnb li a{pointer-events: none;} /* 마우스이벤트를 막는다. */
     </style>
 </head>
 <body>
@@ -57,7 +57,39 @@
     </div>
     <!--//devil-->
    
-</div>    
+</div>  
+<script>
+    const gnb=document.querySelector('.gnb');
+    const gnbli=document.querySelectorAll('.gnb>li');
+    const section=document.querySelectorAll('.section');
+    const gnbPos=gnb.getBoundingClientRect().top;
+    const gnbFix  = () =>{
+        const nowScroll =  window.scrollY; // #1
+        if(nowScroll>gnbPos){
+            gnb.classList.add('fix')
+         }else{
+            gnb.classList.remove('fix')
+         }
+    }
+    window.addEventListener('scroll',gnbFix)
+
+    gnb.addEventListener('click',(e)=>{
+        const selectedLi = e.target;
+        const index = selectedLi.dataset.index;
+        const sectionPos = section[index].getBoundingClientRect().top;
+        console.log(sectionPos);
+        window.scrollBy(0,sectionPos);
+    })
+
+    /* 
+     <!-- 
+    #1 같은값 출력 
+         const nowScroll = document.documentElement.scrollTop;
+         const nowScroll= window.pageYOffset;
+         const nowScroll= window.scrollY;
+     -->
+    */
+</script>  
 </body>
 </html>
 

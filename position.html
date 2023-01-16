@@ -35,6 +35,16 @@
         console.log(scrollValue1);
         console.log(scrollValue3);
 
+        function getPosTop(ele) {
+            return window.scrollY + ele.getBoundingClientRect().top; 
+        }
+
+        const posCalc1 = getPosTop(inner)
+        const posCalc2 = getPosTop(outer)
+
+        console.log(posCalc1)
+        console.log(posCalc2)
+
     </script>
     <!-- 
 
@@ -49,7 +59,11 @@
     window.scrollY  페이지의 세로 스크롤 값을 받아온다.  (익스안됨)
     window.pageYOffset (익스됨)
 
+    해당 엘러먼트의 상단 절대 좌표 구하기 
+    window.scrollY + element.getBoundingClientRect().top ; 
+    window.pageYOffset + element.getBoundingClientRect().top ; 
 
+    scrollTo(x좌표, Y좌표)  특정위치로 스크롤 시켜주는 함수 
      -->
 </body>
 </html>

@@ -9,7 +9,7 @@
     <style>
         * {
             box-sizing: border-box;
-            scroll-behavior: smooth; 
+            scroll-behavior: smooth; /* scrollBy scrollTo 스크립트 이용시 behavior 옵션대신 css 설정 */
             margin: 0;padding:0;
         }
 
@@ -58,7 +58,31 @@
         <div class="item"></div>
     </div>
     <script>
-       
+        const btns = document.querySelector('.btns');
+        const body = document.querySelector('body');
+        const scrollAni = (e) =>{
+            if(e.target.dataset.direction === "bottom50"){
+                window.scrollBy(0,50);
+            }else if(e.target.dataset.direction === 'top50'){
+                 window.scrollBy(0,-50);
+            }else if(e.target.dataset.direction === '750'){
+                window.scrollTo(0,750)
+            }else if(e.target.dataset.direction === 'top'){
+                window.scrollTo(0,0)
+            }else if(e.target.dataset.direction === 'bottom'){
+                window.scrollTo(0,body.scrollHeight)
+
+            }
+        }
+
+        btns.addEventListener('click',scrollAni)
+
+       //scrollBy  상대적 위치 
+       //scrollTo 절대적 위치 
+       //clientHeight 요소의 높이   padding 까지 포함한 높이 
+       //offsetHeight  요소의 높이   padding , border 까지 포함한 높이 
+       //scrollHeight  요소의 높이 padding , border 포함 컨텐츠 전체의 높이 (가시적인 부분의 높이가 아닌 )
+
     </script>
 </body>
 
